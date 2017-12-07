@@ -10,7 +10,6 @@ class SongsController < ApplicationController
   end
 
   def new
-    binding.pry
     @song = Song.new
   end
 
