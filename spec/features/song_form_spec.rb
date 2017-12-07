@@ -1,5 +1,6 @@
 require 'rails_helper'
 require 'capybara/rspec'
+require "pry"
 
 describe "the song form", :type => :feature do
   it "creates a song on submit" do
@@ -14,6 +15,7 @@ describe "the song form", :type => :feature do
     fill_in :song_title, with: 'Little Earthquakes'
     fill_in :song_artist_name, with: 'Tori Amos'
     find('input[name="commit"]').click
+    binding.pry
     expect(Song.last.artist.name).to eq 'Tori Amos'
     expect(Artist.find_by(name: 'Tori Amos').songs.pluck(:title)).to include 'Little Earthquakes'
   end
