@@ -21,14 +21,14 @@ class Song < ActiveRecord::Base
 
   def note_contents
     self.notes.collect do |note|
-      note.contents
+      note.content
     end
   end
 
   def note_contents=(notes)
     notes.each do |note|
-      if !note.contents.empty?
-        self.notes << Note.find_or_create_by(contents: note.contents)
+      if !note.content.empty?
+        self.notes << Note.find_or_create_by(content: note.content)
       end
     end
   end
